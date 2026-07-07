@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Skills 完整教學｜大有牧森</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-black:        #000000;
+    --brand-yellow:       #FFD600;
+    --brand-white:        #FFFFFF;
+    --brand-gray:         #EBEBEB;
+    --brand-orange:       #FF8C00;
+    --accent-lime:        #C8FF00;
+    --accent-neon-blue:   #00C8FF;
+    --accent-sun-orange:  #FF6000;
+    --text-dark:          #1A1A1A;
+    --text-mid:           #555555;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { font-size: 19px; } /* ~14.25pt minimum base */
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    color: var(--text-dark);
+    background: var(--brand-white);
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  a { color: var(--brand-black); }
+
+  .signature {
+    font-family: 'Brush Script MT', 'Segoe Script', cursive;
+    font-style: italic;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: var(--brand-yellow);
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    border-bottom: 6px solid var(--brand-black);
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    background: var(--brand-black);
+    color: var(--brand-white);
+    font-weight: 700;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-size: 2.3rem;
+    font-weight: 900;
+    margin: 0 0 0.6rem;
+    line-height: 1.3;
+  }
+  .hero p.sub {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 auto;
+    max-width: 34rem;
+  }
+  .hero .creator {
+    margin-top: 1.6rem;
+    font-size: 1.1rem;
+  }
+  .hero .creator .signature { font-size: 1.6rem; }
+
+  /* ---------- CONTAINER ---------- */
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    background: var(--brand-gray);
+    border: 2px solid var(--brand-black);
+    border-radius: 10px;
+    padding: 1.5rem 1.7rem;
+    margin: 2.5rem auto;
+  }
+  .toc h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+  .toc ul {
+    columns: 2;
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+  .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+  .toc a { text-decoration: none; font-weight: 500; }
+  .toc a:hover { color: var(--brand-orange); }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .part-tag {
+    display: inline-block;
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  section {
+    margin: 3.2rem 0;
+    scroll-margin-top: 1rem;
+  }
+  section h2 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    margin: 0 0 1.1rem;
+    border-bottom: 4px solid var(--accent-lime);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+  section h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 1.6rem 0 0.6rem;
+  }
+  .highlight {
+    background: var(--brand-yellow);
+    padding: 0.05em 0.4em;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  /* ---------- CARDS GRID (6 efficiencies) ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
+    margin-top: 1.2rem;
+  }
+  .card {
+    border: 2px solid var(--brand-black);
+    border-radius: 10px;
+    padding: 1.2rem 1.3rem;
+    background: var(--brand-white);
+  }
+  .card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+    border-radius: 50%;
+    font-weight: 900;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+  }
+  .card h4 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .card p { margin: 0; font-size: 0.98rem; color: var(--text-mid); }
+
+  /* ---------- STEP LIST ---------- */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0.9rem 1.2rem 0.9rem 3.2rem;
+    margin-bottom: 0.8rem;
+    background: var(--brand-gray);
+    border-radius: 8px;
+    border-left: 6px solid var(--brand-orange);
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--brand-black);
+    color: var(--brand-white);
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- RULE / CHECK LISTS ---------- */
+  ul.plain, ol.plain { padding-left: 1.4rem; margin: 0.8rem 0; }
+  ul.plain li, ol.plain li { margin-bottom: 0.55rem; }
+
+  .mistake-box {
+    border: 2px solid var(--brand-black);
+    border-left: 8px solid var(--accent-sun-orange);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+    background: var(--brand-white);
+  }
+  .mistake-box strong { display: block; margin-bottom: 0.3rem; font-size: 1.05rem; }
+
+  /* ---------- CODE BLOCKS ---------- */
+  pre {
+    background: #1c1c1c;
+    color: #e8e8e8;
+    padding: 1.1rem 1.3rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border: 2px solid var(--accent-lime);
+  }
+  code {
+    font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  }
+  .lang-tag {
+    display: inline-block;
+    background: var(--accent-lime);
+    color: var(--brand-black);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---------- SKILL CARDS (Part 3 examples) ---------- */
+  .skill-card {
+    border: 2px solid var(--brand-black);
+    border-radius: 12px;
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1.8rem;
+    background: var(--brand-white);
+  }
+  .skill-card .badge {
+    display: inline-block;
+    background: var(--brand-orange);
+    color: var(--brand-white);
+    font-weight: 700;
+    padding: 0.25rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  .skill-card h3 { margin: 0 0 0.6rem; font-size: 1.4rem; }
+  .skill-card .what { font-weight: 500; margin-bottom: 0.9rem; }
+  .skill-card .what strong { background: var(--brand-yellow); padding: 0 0.3em; border-radius: 3px; }
+
+  details {
+    margin-top: 0.9rem;
+    border-top: 2px dashed var(--brand-gray);
+    padding-top: 0.8rem;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.98rem;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { background: #2a2a2a; }
+  details[open] summary { margin-bottom: 0.9rem; }
+
+  .subhead {
+    font-weight: 700;
+    margin: 1rem 0 0.3rem;
+    font-size: 1.02rem;
+  }
+
+  /* ---------- CALLOUT ---------- */
+  .callout {
+    background: var(--brand-gray);
+    border-radius: 10px;
+    padding: 1.3rem 1.5rem;
+    border: 2px solid var(--brand-black);
+    margin: 1.5rem 0;
+  }
+  .callout .lbl {
+    display: inline-block;
+    background: var(--accent-neon-blue);
+    color: var(--brand-black);
+    font-weight: 700;
+    padding: 0.2rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--brand-black);
+    color: var(--brand-white);
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    margin-top: 4rem;
+  }
+  footer .signature {
+    color: var(--brand-yellow);
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  footer p {
+    font-size: 0.95rem;
+    color: #cccccc;
+    margin: 0.3rem 0;
+  }
+
+  @media (max-width: 640px) {
+    html { font-size: 18px; }
+    .grid { grid-template-columns: 1fr; }
+    .toc ul { columns: 1; }
+    .hero h1 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="eyebrow">AI 工具教學</span>
+  <h1>Claude Skills 完整教學<br>從原理到 5 個實戰範本</h1>
+  <p class="sub">教 Claude 記住你的做事方式，再也不用每次重新解釋 —— 這篇整理給想把 AI 用得更深的你。</p>
+  <div class="creator"><span class="signature">Austin 大有</span> ｜ 大有牧森</div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>本篇目錄</h2>
+    <ul>
+      <li><a href="#part1">Part 1．什麼是 Claude Skills？</a></li>
+      <li><a href="#part2">Part 2．6 大效益</a></li>
+      <li><a href="#part3">Part 3．如何寫一個 Skill</a></li>
+      <li><a href="#mistakes">3 個最常見的錯誤</a></li>
+      <li><a href="#easiest">最快建立第一個 Skill 的方法</a></li>
+      <li><a href="#quickstart">快速安裝 3 步驟</a></li>
+      <li><a href="#skills5">5 個可以直接用的 Skill 範本</a></li>
+      <li><a href="#tips">開始前的小提醒</a></li>
+    </ul>
+  </nav>
+
+  <!-- PART 1 -->
+  <section id="part1">
+    <span class="part-tag">PART 1</span>
+    <h2>什麼是 Claude Skills？</h2>
+    <p>想像你剛請了一位很聰明的新助理。他很厲害，但第一天完全不了解你——不知道你的工作流程、你喜歡的格式、你的觀眾喜歡什麼、你的品牌怎麼說話。所以每一天，你都要花 20 分鐘重新解釋一遍，才能真正開始做事。</p>
+    <p><span class="highlight">Claude Skills 就是為了解決這個問題而生。</span></p>
+    <p>一個 Skill 其實就是一組指令，包裝成一個簡單的資料夾。你上傳之後，Claude 會在相關的時候自動讀取它——不用提醒、不用重新解釋、不用每次從零開始。</p>
+    <p>可以把 Skills 想成「Claude 的模組化升級包」。你把自己的做事方法寫下來一次，Claude 之後每次對話都會延續使用。</p>
+    <p>真正厲害的地方在於背後的機制：Skills 使用「<strong>漸進式揭露（progressive disclosure）</strong>」。Claude 不會把你完整的指令內容塞進每一次對話，而是先讀一段簡短描述——剛好足夠知道這個 Skill 存在。如果你的需求對得上，Claude 才會載入完整指令；對不上，就完全忽略。這代表你可以安裝 50 幾個 Skills，Claude 依然跑得很快，不會佔用過多的上下文空間。</p>
+    <p>Skills 可以跨 Claude.ai、Claude Code、API 通用——寫一次，到處都能用。</p>
+  </section>
+
+  <!-- PART 2 -->
+  <section id="part2">
+    <span class="part-tag">PART 2</span>
+    <h2>6 大效益，Skills 幫你解鎖的事</h2>
+    <p>每次跟 Claude 開新對話，預設都是從零開始。它不記得你怎麼工作、你做過什麼、你在意什麼。Skills 從根本上改變了這件事，實際能解鎖的效益包括：</p>
+    <div class="grid">
+      <div class="card">
+        <div class="num">1</div>
+        <h4>不用再重複解釋</h4>
+        <p>不論是品牌語氣、研究流程還是文件格式，你在 Skill 裡解釋一次就好。之後每次對話，Claude 都已經知道。</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h4>每次輸出都一致</h4>
+        <p>同一組指令，每個 session、每位團隊成員執行結果都一樣。在一個本質上非決定性的系統裡，Skills 是最接近「品質保證」的東西。</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h4>工作流程更快，效益會複利</h4>
+        <p>有重度使用者回報，每週兩小時的規劃會議縮短到 10 分鐘；也有人每天省下 30–45 分鐘的重複性工作。Skill 用得越多，回報的時間就越多。</p>
+      </div>
+      <div class="card">
+        <div class="num">4</div>
+        <h4>Claude 自動選對的 Skill</h4>
+        <p>你不需要說「現在用我的品牌語氣 Skill」。Claude 讀懂你的需求，自動辨識出符合的 Skill，並在背後默默套用。</p>
+      </div>
+      <div class="card">
+        <div class="num">5</div>
+        <h4>裝再多個都不會變慢</h4>
+        <p>因為漸進式揭露的機制，就算裝了 50 個 Skills，對效能幾乎沒有影響。Claude 只會載入真正需要的部分。</p>
+      </div>
+      <div class="card">
+        <div class="num">6</div>
+        <h4>一個重要觀念：Skills ≠ Projects</h4>
+        <p>Projects 存放的是背景知識——文件、脈絡、歷史紀錄；Skills 存放的是做事流程——怎麼做。Projects 說「這是你需要知道的」，Skills 說「這是該怎麼做的」。兩者搭配使用效果最好。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART 3 -->
+  <section id="part3">
+    <span class="part-tag">PART 3</span>
+    <h2>如何寫一個 Claude Skill</h2>
+    <p>一個 Skill 就是一個<strong>資料夾</strong>，裡面只需要一個必要檔案：<code>SKILL.md</code>。完全不用寫程式。這個檔案分成兩個部分。</p>
+
+    <h3>Step 1．YAML Frontmatter（標籤區）</h3>
+    <p>放在檔案最上方，夾在兩組 <code>---</code> 之間。內容雖短，卻是整個 Skill 最關鍵的部分。</p>
+    <span class="lang-tag">EN · 直接照格式使用</span>
+    <pre><code>---
+name: brand-voice
+description: Applies a casual, punchy, jargon-free voice to any written output. ALWAYS invoke this skill when writing blog posts, emails, social copy, newsletters, or any customer-facing content.
+---</code></pre>
+    <p><span class="highlight">這是 Claude 用來判斷「要不要載入你的 Skill」的依據。</span>Claude 會掃過每一個已安裝 Skill 的 description，決定哪些跟目前任務有關。如果你的描述很模糊，Claude 會悄悄忽略這個 Skill——就算它其實完全符合需求。</p>
+    <p>研究顯示：被動、模糊的描述，觸發率可能低到只有 37%；具體、指令式的描述，觸發率可以接近 100%。</p>
+
+    <h3 class="subhead">描述（description）要遵守的規則：</h3>
+    <ul class="plain">
+      <li>同時說明「<strong>做什麼</strong>」和「<strong>什麼時候用</strong>」——兩者缺一不可</li>
+      <li>加入具體的觸發語句（例如「when writing newsletters」「when user asks for a proposal」）</li>
+      <li>用第三人稱寫（「Applies brand voice」而不是「I help with writing」）</li>
+      <li>語氣可以強硬一點——像「ALWAYS invoke this skill when...」這種寫法，比委婉建議更容易穩定觸發</li>
+      <li>如果是給 Claude.ai（消費版）用，描述控制在 200 字元以內；若是用 API，可以到 1,024 字元</li>
+    </ul>
+
+    <h3 class="subhead">命名（name）要遵守的規則：</h3>
+    <ul class="plain">
+      <li>只用小寫字母，字詞之間用連字號：<code>brand-voice</code> ✅</li>
+      <li>不能有空格、不能有大寫、不能用底線：<code>Brand Voice</code> ❌</li>
+    </ul>
+
+    <h3>Step 2．Markdown Body（說明書本體）</h3>
+    <p>Frontmatter 之後的所有內容，用一般的 Markdown 撰寫。這裡才是你真正告訴 Claude「該怎麼做」的地方。建議結構：</p>
+    <ul class="plain">
+      <li><strong>Overview 總覽</strong>——一段話說明這個 Skill 做什麼、解決什麼問題</li>
+      <li><strong>Step-by-step instructions 逐步指示</strong>——帶著 Claude 一步步做，把 Claude 不會自己知道的規則寫清楚</li>
+      <li><strong>Examples 範例</strong>——給 Claude 看 before/after 或 input/output 的對照，這是最有效的引導方式之一</li>
+      <li><strong>Quality checklist 品質檢查表</strong>——完成前 Claude 可以自我檢查的幾個重點</li>
+      <li><strong>Limitations 限制</strong>——這個 Skill「不適用」的場合，避免 Claude 用錯地方</li>
+      <li><strong>Keep it lean 保持精簡</strong>——主要的 SKILL.md 盡量控制在 500 行以內。如果有詳細參考資料（完整品牌手冊、風格指南、範本），移到 <code>references/</code> 子資料夾，Claude 只有真正需要時才會載入。</li>
+    </ul>
+  </section>
+
+  <!-- MISTAKES -->
+  <section id="mistakes">
+    <span class="part-tag">重點提醒</span>
+    <h2>3 個最常見的錯誤</h2>
+    <div class="mistake-box">
+      <strong>① 描述太模糊</strong>
+      「Helps with content」這種寫法永遠不會穩定觸發。「Applies a punchy, jargon-free brand voice when writing newsletters, social posts, and landing pages」才會。如果你的 Skill 該觸發卻沒觸發，問題幾乎都出在 description 上。
+    </div>
+    <div class="mistake-box">
+      <strong>② 一個 Skill 塞進所有功能</strong>
+      這樣的 Skill 觸發不穩定，還會讓 Claude 混亂。原則是：一個 Skill，一個任務。需要多功能時，就建立多個 Skill，讓它們彼此搭配使用。
+    </div>
+    <div class="mistake-box">
+      <strong>③ 過度解釋 Claude 早就知道的事</strong>
+      不用定義「什麼是部落格文章」。只需要告訴 Claude 你自己的規則——那些跟你的做事方式有關、Claude 不會自己知道的部分。
+    </div>
+  </section>
+
+  <!-- EASIEST WAY -->
+  <section id="easiest">
+    <span class="part-tag">新手推薦</span>
+    <h2>最快建立第一個 Skill 的方法</h2>
+    <ol class="steps">
+      <li>正常跟 Claude 對話，實際做一次你想要的任務，用你喜歡的方式做</li>
+      <li>持續微調，直到輸出結果完全符合你要的樣子</li>
+      <li>接著跟 Claude 說：「把這次對話學到的東西，整理成一個 Skill 檔案」</li>
+      <li>Claude 會直接產出格式化好的 <code>SKILL.md</code></li>
+      <li>下載檔案、放進資料夾、壓縮資料夾，再到 <strong>Settings → Capabilities → Skills</strong> 上傳</li>
+    </ol>
+    <div class="callout">
+      <span class="lbl">測試技巧</span>
+      <p style="margin:0">用一個「真實、有點隨性」的提問來測試，不要用完美措辭的句子——就用你平常忙碌時實際會打的那種句子。如果沒有觸發，就把 description 寫得更具體、加入更多觸發語句，語氣也更直接一點。</p>
+    </div>
+  </section>
+
+  <!-- QUICK START -->
+  <section id="quickstart">
+    <span class="part-tag">操作步驟</span>
+    <h2>快速安裝：3 步驟裝好你的第一個 Skill</h2>
+    <ol class="steps">
+      <li><strong>開啟 Skills 功能</strong> —— 到 Settings → Capabilities，打開「Code execution and file creation」。Skills 需要這個功能才能運作。</li>
+      <li><strong>建立你的 Skill 資料夾</strong> —— 在電腦上新增一個資料夾，用小寫＋連字號命名（例如 <code>brand-voice</code>）。資料夾裡建立一個檔名完全是 <code>SKILL.md</code> 的檔案（區分大小寫）。貼上你選好的 Skill 範本，把裡面的括號段落改成你自己的內容。</li>
+      <li><strong>上傳到 Claude</strong> —— 把資料夾壓縮成 zip，到 Settings → Capabilities → Skills → 點「+」→ 上傳 zip 檔 → 開啟這個 Skill 的開關。</li>
+    </ol>
+    <p>完成後，下一次對話就會自動用上這個 Skill。</p>
+  </section>
+
+  <!-- 5 SKILLS -->
+  <section id="skills5">
+    <span class="part-tag">PART 3 延伸</span>
+    <h2>5 個能自動幫你工作的 Skills</h2>
+    <p>以下每個 Skill 都附上兩樣東西：可以直接貼給 Skill Creator 的<strong>英文提示詞</strong>，以及完成後的 <strong>SKILL.md 內容</strong>，方便你直接參考或修改。指令與程式碼部分保留英文原文，貼上就能用。</p>
+
+    <!-- SKILL 1 -->
+    <div class="skill-card">
+      <span class="badge">SKILL 1</span>
+      <h3>Brand Voice 品牌語氣</h3>
+      <p class="what">把你具體的語氣、句型、用字規則，套用到任何文字輸出上——讓 Claude 寫出來的東西<strong>聽起來像你</strong>，而不是通用 AI 腔調。教一次，之後每次寫作都自動套用。</p>
+
+      <div class="subhead">需要準備的輸入：</div>
+      <ul class="plain">
+        <li>用幾個詞形容你的語氣（例如：口語、直接、溫暖）</li>
+        <li>句子長度與節奏偏好</li>
+        <li>你常用的詞彙與說法</li>
+        <li>你絕對不會用的詞彙與說法</li>
+        <li>1–2 篇你的文字範例，讓 Claude 抓到你的節奏</li>
+      </ul>
+
+      <div class="subhead">怎麼使用：</div>
+      <p style="margin:0.3rem 0 0">給 Claude 一個主題、草稿或內容需求，它就會自動套用你的語氣。適用部落格、電子報、社群文案、Email、Landing Page 等所有面對讀者的內容。語氣規則寫得越具體，輸出越穩定；只要發現輸出走鐘，隨時回來調整規則就好。</p>
+
+      <details>
+        <summary>展開：貼給 Skill Creator 的英文提示詞</summary>
+        <pre><code>Use the skill creator to build me a skill that applies my brand voice to any written content. I should be able to give it a topic, a draft, or a brief, and it should write in my specific tone and style every time. It should follow a set of voice rules I define: my tone in a few words, the sentence length and rhythm I use, the vocabulary I reach for, and a list of words and phrases I never use. It should always do certain things — like lead with the benefit and use active voice — and never do others, like write long dense paragraphs or use corporate buzzwords. Before finishing any piece of content it should run a quick self-check: does this sound like a real person, not a press release? Keep it consistent every time, regardless of the topic.</code></pre>
+      </details>
+
+      <details>
+        <summary>展開：完整 SKILL.md 內容（英文）</summary>
+        <pre><code>---
+name: brand-voice
+description: >
+Applies [YOUR BRAND NAME]'s specific tone, sentence style, and
+voice rules to any written output. ALWAYS invoke this skill when
+writing blog posts, social media posts, emails, newsletters,
+landing pages, or any customer-facing copy. Also trigger when the
+user says "write this in my voice," "make this sound like me," or
+"apply our brand voice to this."
+---
+
+# Brand Voice
+
+## Why this exists
+Generic AI output sounds like everyone else. This skill makes sure
+Claude writes in your voice — not a default one. The rules here are
+the things Claude would not know without you: your rhythm, your
+vocabulary, your hard limits. Give it a topic or a draft and it
+writes as you, not as an AI approximation of a writer.
+
+## Voice rules
+
+### Tone
+[e.g., Conversational and confident. Write like a smart friend who
+has done the research, not a corporate spokesperson.]
+
+### Sentence style
+[e.g., Short sentences. One idea per sentence. Vary the rhythm —
+some punchy two-word lines, some longer ones for context. Never more
+than three sentences in a paragraph.]
+
+### Vocabulary
+[e.g., Plain English. Use the words your audience actually says.
+If you would not say it out loud in a meeting, do not write it.]
+
+### Always do
+- [e.g., Lead with the benefit, not the feature]
+- [e.g., Use active voice — subject does the action]
+- [e.g., End every piece with a clear next step]
+- [e.g., Use specific numbers and examples over vague claims]
+
+### Never do
+- [e.g., Use buzzwords: "synergy," "leverage," "holistic," "ideate"]
+- [e.g., Open with "In today's fast-paced world" or any variation]
+- [e.g., Write paragraphs longer than 3 sentences]
+- [e.g., Use the em dash heavily — it signals AI writing]
+- [e.g., Use passive voice]
+
+## Writing samples
+[Paste 1–2 short pieces you wrote and consider on-brand. Claude
+will match the rhythm, not just the rules.]
+
+## Self-check before finishing
+- Does this sound like a real person talking, not a press release?
+- Are all paragraphs under 3 sentences?
+- Is every sentence earning its place, or is something padding?
+- Would the target reader recognize this as written for them?
+
+## What this skill is not for
+Technical documentation, legal copy, or formal reports where a
+different register is required. For those, disable this skill.</code></pre>
+      </details>
+    </div>
+
+    <!-- SKILL 2 -->
+    <div class="skill-card">
+      <span class="badge">SKILL 2</span>
+      <h3>Audience Profile 受眾輪廓</h3>
+      <p class="what">讓 Claude 對「你在寫給誰看」有深入且具體的理解——他們的用詞、他們的痛點、他們的動機、什麼會讓他們真的採取行動。跟 Brand Voice 搭配使用，每篇內容都會因為寫給真實的人，而更有說服力。</p>
+
+      <div class="subhead">需要準備的輸入：</div>
+      <ul class="plain">
+        <li><strong>他們是誰</strong>：角色、階段、對 AI 的熟悉程度、日常情境</li>
+        <li><strong>他們在意什麼</strong>：目標、優先順序、想要的結果</li>
+        <li><strong>他們的用詞</strong>：會用的字 vs. 不會用的字</li>
+        <li><strong>什麼讓他們感到困擾</strong>（對工具、內容、廠商）</li>
+        <li><strong>什麼會驅動他們行動</strong>：急迫感、情緒觸發點</li>
+      </ul>
+
+      <div class="subhead">怎麼使用：</div>
+      <p style="margin:0.3rem 0 0">跟 Brand Voice 一起安裝，兩者會自動搭配運作——Brand Voice 控制「怎麼說」，Audience Profile 控制「說給誰聽」。受眾改變或你進入新的市場區隔時，隨時更新內容。痛點跟用詞寫得越具體，輸出就越不會像是「寫給任何人都可以」的通用內容。</p>
+
+      <details>
+        <summary>展開：貼給 Skill Creator 的英文提示詞</summary>
+        <pre><code>Use the skill creator to build me a skill that gives Claude a detailed profile of my target audience. I should be able to define who they are in terms of their role and situation, what they care about most, the exact vocabulary they use and the words they avoid, what frustrates them, and what makes them click or buy. The skill should use this profile any time Claude is writing content, copy, or messaging for me — so it always writes to the right person, not a generic reader. Include a section for what motivates them to take action, since that is the most important part to get right.</code></pre>
+      </details>
+
+      <details>
+        <summary>展開：完整 SKILL.md 內容（英文）</summary>
+        <pre><code>---
+name: audience-profile
+description: >
+Loads a detailed profile of [YOUR AUDIENCE NAME] so all content,
+copy, and messaging speaks directly to the right person. ALWAYS
+invoke this skill when writing content, emails, social posts, or
+any messaging intended for [YOUR AUDIENCE, e.g., AI enthusiasts,
+early-stage founders, B2B marketers]. Also trigger when the user
+says "write for my audience," "who is this for," or "make this
+relevant to my reader."
+---
+
+# Audience Profile
+
+## Why this exists
+Writing for "everyone" means writing for no one. This skill gives
+Claude a specific person to write to — their language, their
+frustrations, their motivations, and what makes them act. Every
+piece of content produced while this skill is active should feel
+like it was written for one reader who will think: "this is exactly
+my situation."
+
+## Who they are
+- **Role:** [e.g., Founders, marketers, and operators at companies
+with 1–50 employees]
+- **Stage:** [e.g., Post-product, pre-scale. Wearing multiple hats
+and trying to do more with less.]
+- **AI familiarity:** [e.g., Curious and early-adopting, but not
+deeply technical. They want tools, not theory.]
+- **Daily context:** [e.g., Busy. Skimming. Making fast decisions.
+Will not read a wall of text.]
+
+## What they care about
+- [e.g., Getting more done without hiring more people]
+- [e.g., Looking ahead of the curve to peers and clients]
+- [e.g., Practical tools they can use today, not in six months]
+- [e.g., Honest assessments — they distrust hype]
+
+## Their vocabulary
+**Words and phrases they use:**
+[e.g., "workflow," "stack," "ship," "automate," "leverage AI,"
+"build in public," "systems thinking"]
+
+**Words and phrases they don't use:**
+[e.g., "synergize," "ideate," "circle back," "deep dive,"
+"thought leader," "disruptive"]
+
+## What frustrates them
+- [e.g., Tools that require technical setup to get basic value]
+- [e.g., Guides that explain what to do but not how]
+- [e.g., AI content that sounds like AI]
+- [e.g., Overpromising without showing proof]
+
+## What motivates them to act
+- [e.g., Feeling like they are ahead of their competitors]
+- [e.g., A fast, tangible win they can implement the same day]
+- [e.g., Seeing proof that something works before they invest time]
+- [e.g., Someone being honest about limitations, not just the upside]
+
+## Writing guidance
+Always write as if addressing one smart, busy person. Lead with
+value. Use their vocabulary, not yours. Respect their time — if a
+sentence does not earn its place, cut it. Avoid anything that could
+have been written by anyone; if it is generic, it will be ignored.
+
+## What this skill is not for
+Technical documentation or internal communications where audience
+context is not relevant.</code></pre>
+      </details>
+    </div>
+
+    <!-- SKILL 3 -->
+    <div class="skill-card">
+      <span class="badge">SKILL 3</span>
+      <h3>Hyper-Personalized Content Engine 內容引擎</h3>
+      <p class="what">把一段影片、Podcast 或語音備忘錄的逐字稿，挖出裡面真正有價值的想法，再轉換成一批可以直接發佈的 LinkedIn 貼文、Twitter/X 串文，以及一篇 SEO 文章——而且全部都用你的語氣。不是摘要，也不是 AI 廢文，是讀起來真的像人寫的一週份內容。</p>
+
+      <div class="subhead">需要準備的輸入：</div>
+      <ul class="plain">
+        <li>原始逐字稿（直接貼進對話）</li>
+        <li>一份填好的 <code>references/brand_bible.md</code> 檔案（見下方範本——只要填一次，之後每次都會套用）</li>
+      </ul>
+
+      <div class="subhead">怎麼使用：</div>
+      <p style="margin:0.3rem 0 0">先填好一次 brand bible——這是讓每次輸出都聽起來像你、而不是機器的關鍵投資。之後貼上任何逐字稿，Skill 就會挖出真正有趣的重點、強烈的觀點、故事、具體的數字，廢話會被自動捨棄。每種格式都針對該平台寫作：LinkedIn 貼文留白方便掃讀、串文每則獨立成立、文章有清楚標題方便搜尋。錄完影片、上完 Podcast、講完一場演講之後直接跑一次，就有一週份的內容。</p>
+
+      <div class="subhead">Brand Bible 參考檔範本（<code>references/brand_bible.md</code>）：</div>
+      <pre><code># Brand Bible
+
+## Who I am and what I talk about
+[Your role, your audience, the topics you own.]
+
+## Tone in three words
+[e.g., direct, warm, practical]
+
+## Phrases and words I use
+[Signature phrases, the way you open and close, words you reach for.]
+
+## Words and phrases I never use
+[Hype words, clichés, anything that sounds like AI.]
+
+## Point of view
+[The opinions and beliefs that show up across your content.]
+
+## Writing samples
+[Paste 2–3 short pieces you wrote, so the rhythm can be matched.]</code></pre>
+
+      <details>
+        <summary>展開：貼給 Skill Creator 的英文提示詞</summary>
+        <pre><code>Use the skill creator to build me a skill that turns a raw transcript into a week of content that sounds like me. I should be able to paste in a rough transcript from a five to ten minute video and it should pull out the real ideas and turn them into a batch of LinkedIn posts, a few Twitter or X threads, and one longer SEO article. The whole thing should read like a person, not like AI. For voice, have it follow a brand bible reference file that I fill in once with my tone, the phrases I use, the words I never use, my point of view, and a couple of writing samples to copy the rhythm from. Tell it to write at a plain reading level, keep sentences short and natural, skip the hype words and the em dash heavy AI cadence, never open with a tired phrase like "in today's fast paced world," and always lead with a real hook. Each piece should be ready to post, with the LinkedIn ones spaced for easy reading and the article structured with clear headings for search.</code></pre>
+      </details>
+
+      <details>
+        <summary>展開：完整 SKILL.md 內容（英文）</summary>
+        <pre><code>---
+name: content-engine
+description: >
+Turn a raw video or audio transcript into a batch of ready-to-post
+content that matches the user's personal voice, using a brand bible
+reference file. Use this whenever the user pastes a transcript, raw
+notes, or a recording summary and wants it repurposed into LinkedIn
+posts, Twitter or X threads, a newsletter section, or an SEO
+article. Also trigger when they say things like "turn this into
+content," "make this sound like me," "repurpose this," "give me a
+week of posts from this," or "I recorded a video and want content
+from it." Trigger even when they do not name the specific formats.
+Do not use for short factual rewrites or content with no personal
+voice requirement.
+---
+
+# Content Engine
+
+## Why this exists
+Most repurposed content reads like a machine flattened a transcript.
+The ideas are buried, the voice is gone, and it sounds like everyone
+else. This skill does the opposite: it mines the transcript for the
+real ideas, then writes them in the user's actual voice by following
+a brand bible the user fills in once. The output should be
+indistinguishable from something the user wrote on a good day.
+
+## Workflow
+
+### 1. Load the brand bible
+Read references/brand_bible.md first. It defines tone, signature
+phrases, banned words, point of view, and writing samples. If it is
+missing, ask the user to fill in a short version before writing —
+voice is the whole point and generic output without it defeats
+the purpose.
+
+### 2. Mine the transcript for ideas
+Read the transcript and pull out the genuinely interesting points:
+the strong opinions, the stories, the specific numbers and examples.
+Discard filler, throat-clearing, and anything that could have been
+said by anyone. A transcript usually holds three to six real ideas
+worth a post each.
+
+### 3. Write in voice, per format
+For each format, match the brand bible rhythm exactly. Lead every
+piece with a real hook, not a windup. Keep sentences short and
+natural. Avoid hype words and the heavy em dash cadence that signals
+AI. Never open with a tired stock phrase. If a line could have been
+written by anyone, rewrite it in the user's voice.
+
+### 4. Format for the platform
+- **LinkedIn posts:** Short lines and white space for easy reading.
+One idea per post. Hook in the first line — it must work before
+the "see more" cut.
+- **Threads:** Numbered. Each post stands alone. The first tweet is
+the hook; the last is the takeaway or CTA.
+- **SEO article:** Clear headline and subheadings. Lead with the
+answer, not a preamble. Written for search and for humans.
+
+## Output structure
+
+ALWAYS use this structure:
+
+---
+## LinkedIn posts
+[3–5 posts, each ready to paste. Separated by a blank line.]
+
+## Threads
+[2–3 threads, each numbered from 1/.]
+
+## SEO article
+[One article with a headline and subheadings.]
+---
+
+Write everything in one pass. Then read it back and cut anything
+that sounds like AI. The brand bible is the quality bar — if it
+does not match, rewrite before delivering.
+
+## What this skill is not for
+Writing content for a brand the user did not define in the brand
+bible, or producing formal documents, reports, or technical writing.</code></pre>
+      </details>
+    </div>
+
+    <!-- SKILL 4 -->
+    <div class="skill-card">
+      <span class="badge">SKILL 4</span>
+      <h3>Meeting Notes Synthesizer 會議記錄整理</h3>
+      <p class="what">把一份雜亂的會議逐字稿或筆記，整理成乾淨、可執行的紀錄——決議事項、附負責人與截止日期的行動項目、待解決問題、被提出的風險。最關鍵的是：它會清楚區分「真正決定的事」跟「只是討論過的事」，絕不亂猜負責人或截止日期。</p>
+
+      <div class="subhead">需要準備的輸入：</div>
+      <ul class="plain">
+        <li>原始逐字稿或會議筆記（直接貼進對話）</li>
+        <li>（選填）如果逐字稿裡沒有，補充會議主題與日期</li>
+      </ul>
+
+      <div class="subhead">怎麼使用：</div>
+      <p style="margin:0.3rem 0 0">貼上任何逐字稿——Zoom 錄影逐字稿、語音備忘錄、會議中手打的筆記——Skill 會抓重點而不是照單全收。它會把每個決議寫成明確的陳述句，把每個行動項目釘在「說會做的那個人」身上，找不到負責人時就標示「未指派」而不是亂猜。整理完馬上就能貼進 Email、Notion 文件或 Slack 訊息。適用團隊站會、客戶會議、策略會議、投資人會議。</p>
+
+      <details>
+        <summary>展開：貼給 Skill Creator 的英文提示詞</summary>
+        <pre><code>Use the skill creator to build me a skill that turns a messy meeting transcript into a clean, useful recap. I should be able to paste a raw transcript and get back a short summary, the decisions that were actually made, the action items with an owner and a due date for each, the open questions, and any risks or concerns that were raised. It should clearly separate what was decided from what was only discussed, and it should pull out who agreed to do what. Keep it tight and skimmable so I can paste it into an email or a doc right after the meeting. If an owner or a due date was never stated, flag it as unassigned rather than guessing.</code></pre>
+      </details>
+
+      <details>
+        <summary>展開：完整 SKILL.md 內容（英文）</summary>
+        <pre><code>---
+name: meeting-notes-synthesizer
+description: >
+Turn a raw meeting transcript or rough notes into a clean recap with a summary, decisions, action items with owners and due dates, open questions, and risks raised. Use this whenever the user pastes meeting notes or a transcript and wants a recap, minutes, action items, takeaways, or a follow-up summary. Also trigger when they say "what were the action items," "summarize this meeting," "who agreed to what," "turn this into notes I can send," or paste a transcript with little instruction. Do not use for non-meeting text such as articles, reports, or essays.
+---
+
+# Meeting Notes Synthesizer
+
+## Why this exists
+A transcript is long, repetitive, and useless as a record. People leave a meeting unsure who owns what. This skill cuts the transcript down to what matters — and most importantly, separates decisions from discussion and pins each action to an owner, so the recap is something the team can act on rather than reread.
+
+## Workflow
+
+### 1. Read for signal
+Skim the transcript and separate the substance from the small talk and the thinking out loud. Note where the group actually decided something versus merely floated an idea. These are different things and must be recorded differently.
+
+### 2. Extract decisions and actions
+Pull out every decision as a flat, plain statement. Pull out every action item with its owner and due date. If an owner or date was never stated, mark it "unassigned" or "no date set" rather than
+inventing one. A wrong owner is worse than a blank — it creates false accountability and nothing gets done.
+
+### 3. Capture open questions and risks
+List every question the meeting did not resolve. List every risk or concern someone raised, even if the group did not act on it. These are the things most likely to be forgotten and most likely to matter.
+
+### 4. Write the recap
+Keep it short and skimmable. Ready to paste into an email or doc without editing.
+
+## Report structure
+
+ALWAYS use this template:
+
+---
+# Meeting Recap: [Topic] — [date]
+
+## Summary
+[Two to four sentences on what the meeting was about and what came of it.]
+
+## Decisions
+- [Decision stated plainly as a conclusion, not a discussion point.]
+
+## Action items
+- [ ] [Task] — Owner: [name or unassigned] — Due: [date or none set]
+
+## Open questions
+- [Question still unresolved, and what it is waiting on.]
+
+## Risks and concerns
+- [Concern raised, and by whom if known.]
+---
+
+Never guess an owner or a date. A blank flagged clearly is more useful than a confident error.
+
+## What this skill is not for
+Non-meeting text such as articles or reports. Creating formal minutes for legal or governance purposes. Building detailed project plans from a single meeting.</code></pre>
+      </details>
+    </div>
+
+    <!-- SKILL 5 -->
+    <div class="skill-card">
+      <span class="badge">SKILL 5</span>
+      <h3>YouTube Launch Kit YouTube 發布包</h3>
+      <p class="what">把一份影片逐字稿，轉換成完整的發佈素材包：標題選項、適合搜尋的說明欄、附時間軸的章節、標籤、縮圖文字建議、置頂留言。一次到位，讓一支剪好的影片可以直接發佈，不會浪費點擊率。</p>
+
+      <div class="subhead">需要準備的輸入：</div>
+      <ul class="plain">
+        <li>影片逐字稿（直接貼上——如果你的轉錄工具有加時間戳記，請保留，能提高章節準確度）</li>
+        <li>（選填）你的頻道領域或受眾定位，讓標題與標籤更精準</li>
+      </ul>
+
+      <div class="subhead">怎麼使用：</div>
+      <p style="margin:0.3rem 0 0">錄完或剪完影片就把逐字稿貼上。Skill 會先找出這支影片最有吸引力的一個「承諾」——其他所有素材都圍繞這個鉤子展開。標題會兼顧好奇心與誠實，避免下錯標題傷害頻道信任；章節依逐字稿實際的話題轉換點抓取，不是憑空猜測；置頂留言則設計成能引導留言互動或下一步行動。整包內容可以直接複製貼進 YouTube 工作室，不需要再修改。</p>
+
+      <details>
+        <summary>展開：貼給 Skill Creator 的英文提示詞</summary>
+        <pre><code>Use the skill creator to build me a skill that turns a video transcript into a full YouTube publishing package. I should be able to paste the transcript and get back a set of short punchy title options with high curiosity appeal, a description that is search friendly and leads with the value, timestamped chapters based on where the topics actually change in the transcript, a list of tags, a few thumbnail text ideas of three or four words each, and a pinned comment that drives engagement. Keep the titles short and high curiosity without being misleading. Write the description in plain language at an easy reading level. Base the chapters on the actual transcript timing, not guesses. The whole thing should be ready to copy and paste directly into YouTube Studio.</code></pre>
+      </details>
+
+      <details>
+        <summary>展開：完整 SKILL.md 內容（英文）</summary>
+        <pre><code>---
+name: youtube-launch-kit
+description: >
+Turn a video transcript into a complete YouTube publishing package: title options, a search-friendly description, timestamped chapters, tags, thumbnail text ideas, and a pinned comment. Use this whenever the user has a video and needs the metadata to publish it, pastes a transcript, or says things like "write titles for this video," "make the YouTube description," "give me chapters," "help me publish this," or "I need the metadata for this video." Trigger even when they only ask for one part such as titles, since the full kit is usually wanted. Do not use for blog content or social posts unrelated to a video.
+---
+
+# YouTube Launch Kit
+
+## Why this exists
+Shooting a video is the easy part. The title, description, and chapters decide whether anyone watches it, and assembling them by hand is slow and easy to get wrong. This skill takes the transcript and returns the whole publishing package at once — tuned for the click and for search — so a finished video can go live in minutes.
+
+## Workflow
+
+### 1. Find the hook and the value
+Read the transcript and identify the single most compelling promise of the video and the concrete value it delivers. Everything else — titles, description, chapters — follows from this. Get this wrong
+and the rest will be off.
+
+### 2. Write the titles
+Produce several short, high-curiosity title options. Keep them punchy and specific. Curiosity drives clicks; misleading titles drive away the right audience and tank watch time, which hurts the
+channel. Aim for titles a human creator would actually publish.
+
+### 3. Build the description and chapters
+Write a description that leads with the value in plain language at an easy reading level, then supports it with enough detail for search to work. Build chapters from where the topics actually change
+in the transcript, with real timestamps — not invented ones. If the transcript has no timestamps, note the approximate position in the video based on content flow.
+
+### 4. Round out the kit
+Add a list of relevant tags, two to three thumbnail text ideas of three to four words each, and a pinned comment that invites a reply or points to the next logical step for the viewer.
+
+## Output structure
+
+ALWAYS use this template:
+
+---
+## Title options
+1. [Short, punchy, high curiosity — no clickbait]
+2.
+3.
+4.
+5.
+
+## Description
+[Value-first opening. Plain language. Search-friendly detail below.]
+
+## Chapters
+0:00 Introduction
+[mm:ss] [Section title]
+
+## Tags
+[Comma-separated, relevant to topic and channel niche]
+
+## Thumbnail text ideas
+- [Three to four words]
+- [Three to four words]
+- [Three to four words]
+
+## Pinned comment
+[A line that drives engagement, invites a reply, or points to a next step.]
+---
+
+Base chapters on the transcript timing. Keep titles honest. Write the description plainly — it should be readable, not stuffed.
+
+## What this skill is not for
+Blog content, social posts, or any content not connected to a video. Podcast show notes should use a separate skill built for that format.</code></pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips">
+    <span class="part-tag">開始前</span>
+    <h2>幾個小提醒</h2>
+    <ul class="plain">
+      <li><strong>從一個開始</strong>：挑一個跟你最常重複做的任務最相關的 Skill，先做到穩定好用，再考慮增加其他 Skill。</li>
+      <li><strong>用「隨性」的提示詞測試</strong>：不要用措辭完美的句子測試，用你平常忙碌時真的會打出來的那種句子。如果沒觸發，就把描述寫得更具體。</li>
+      <li><strong>Skills 跟 Projects 一起用效果最好</strong>：建立一個 Project 放背景脈絡（文件、知識、目標），再把 Skills 掛進去。Project 提供「知道什麼」，Skill 提供「怎麼做」，兩者搭配的效果，一致優於單獨使用任何一個。</li>
+      <li><strong>隨時可以請 Claude 幫你優化 Skill</strong>：把現有的 <code>SKILL.md</code> 貼進對話，跟 Claude 說：「幫我檢查這個 Skill，並提出讓它觸發更穩定、輸出更好的建議」。Claude 天生就懂這個格式，會給你具體、可執行的回饋。</li>
+      <li><strong>安全提醒</strong>：只安裝你信任來源的 Skill。Skill 可以執行程式碼，惡意的 Skill 有可能存取你的檔案。建議只用自己寫的 Skill、Anthropic 官方目錄裡的 Skill，或是你已經讀過 <code>SKILL.md</code> 內容、確認可信的來源。</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <span class="signature">Austin 大有</span>
+  <p>大有牧森｜AI 工具・3C・旅遊</p>
+  <p>內容整理自 Futurepedia《Guide to Claude Skills》，供頻道教學分享使用</p>
+</footer>
+
+</body>
+</html>
